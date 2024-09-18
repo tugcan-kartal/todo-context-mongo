@@ -89,22 +89,24 @@ export default function Home() {
               key={todo._id}
               className="flex justify-between items-center bg-white p-4 rounded-lg shadow-md"
             >
-              {editingTodo?._id === todo._id ? (
-                <div className="flex flex-1 gap-2">
-                  <input
-                    type="text"
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
-                    className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  <button
-                    onClick={() => editTodo(todo._id)}
-                    className="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition duration-300"
-                  >
-                    Save
-                  </button>
-                </div>
-              ) : (
+              {editingTodo?._id === todo._id 
+                ? 
+                (
+                  <div className="flex flex-1 gap-2">
+                    <input
+                      type="text"
+                      value={editText}
+                      onChange={(e) => setEditText(e.target.value)}
+                      className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <button
+                      onClick={() => editTodo(todo._id)}
+                      className="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition duration-300"
+                    >
+                      Save
+                    </button>
+                  </div>
+                ) : (
                 <>
                   <span className="flex-1 text-gray-700">{todo.text}</span>
                   <div className="flex gap-2">
