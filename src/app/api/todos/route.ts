@@ -28,3 +28,18 @@ export async function DELETE(request: Request) {
   }
   return NextResponse.json({ message: 'Todo deleted successfully' });
 }
+
+// Yeni PUT fonksiyonu
+export async function PUT(request: Request) {
+  const { id, text, completed } = await request.json();
+  await connectToDatabase();
+  const todo = await Todo.findByIdAndUpdate(
+    id,
+    { text, completed },
+    { new: true }
+  );
+  if (!todo) {
+    return NextResponse.json({ error: 'Todo not found' }, { status: 404 });
+  }
+  return NextResponse.json(todo);
+}
